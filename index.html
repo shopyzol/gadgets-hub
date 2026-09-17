@@ -71,11 +71,14 @@ footer a{color:var(--mut)}
 <a class="reel" href="https://www.instagram.com/reel/DdYLFsqjjfk/" target="_blank" rel="noopener">▶ לסרטון באינסטגרם</a></div>
 </div>
 </div>
+<div class="empty" id="nr" style="display:none">לא מצאנו מוצר שמתאים ל-״<span id="nrq"></span>״ 🤔<br>נסו את המספר מהסרטון (למשל 001) או מילה אחת מהשם.</div>
 
 <footer>קישורי שותפים (AliExpress Affiliate): אנחנו מקבלים עמלה קטנה על רכישה דרך הקישורים, המחיר לכם לא משתנה.<br><a href="https://www.instagram.com/shopyzol/" target="_blank" rel="noopener" dir="ltr">@shopyzol</a> · עודכן 17.09.2026</footer>
 <script>
-function f(){var q=document.getElementById('q').value.trim().replace('#','').toLowerCase();
-document.querySelectorAll('.card').forEach(function(c){c.style.display=(!q||c.dataset.k.indexOf(q)>-1)?'':'none';});}
+function f(){var q=document.getElementById('q').value.trim().replace(/#/g,'').toLowerCase();var n=0;
+document.querySelectorAll('.card').forEach(function(c){var ok=(!q||c.dataset.k.indexOf(q)>-1);c.style.display=ok?'':'none';if(ok)n++;});
+var nr=document.getElementById('nr');nr.style.display=(q&&!n)?'block':'none';
+if(q&&!n)document.getElementById('nrq').textContent=document.getElementById('q').value.trim();}
 if(location.hash){var el=document.querySelector(location.hash);if(el)el.scrollIntoView();}
 </script>
 </body>
